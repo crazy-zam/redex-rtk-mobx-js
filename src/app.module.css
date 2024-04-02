@@ -1,0 +1,13 @@
+.navbar {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLink {
+  margin: 16px;
+  background-color: lightgrey;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
