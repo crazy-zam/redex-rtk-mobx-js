@@ -7,6 +7,3 @@ const rtkStore = configureStore({
 
 export default rtkStore;
 
-export type RootState = ReturnType<typeof reducer>;
-
-export type AppDispatch = typeof rtkStore.dispatch;

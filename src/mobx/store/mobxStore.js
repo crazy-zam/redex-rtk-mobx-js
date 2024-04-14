@@ -3,11 +3,11 @@ import { makeAutoObservable, runInAction } from 'mobx';
 
 class mobxStore {
   counter = 0;
-  array: any[] = [];
+  array = [];
   constructor() {
     makeAutoObservable(this);
   }
-  increment = (payload: number) => {
+  increment = (payload) => {
     this.counter = this.counter + payload;
   };
   decrement = () => {
@@ -17,7 +17,7 @@ class mobxStore {
     const response = await axios.get(
       'https://jsonplaceholder.typicode.com/todos',
     );
-    const responseArray: [] = response.data.slice(0, 10);
+    const responseArray = response.data.slice(0, 10);
     runInAction(() => {
       this.array.push(...responseArray);
     });

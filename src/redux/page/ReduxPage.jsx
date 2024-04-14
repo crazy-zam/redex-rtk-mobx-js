@@ -1,22 +1,15 @@
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './reduxPage.module.css';
 import {
   decrementAction,
   incrementAction,
   clearArrayAction,
 } from '../store/actionCreators';
-
-import { useAppDispatch } from '../hooks/useAppDispatch';
 import { fetchArray } from '../asyncActions/asyncAction';
-interface ITodo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+
 const ReduxPage = () => {
-  const dispatch = useAppDispatch();
-  const reduxStore = useTypedSelector((state) => state);
+  const dispatch = useDispatch();
+  const reduxStore = useSelector((state) => state);
   return (
     <div className={styles.page}>
       <div>Count {reduxStore.counter}</div>
@@ -31,8 +24,8 @@ const ReduxPage = () => {
         <button onClick={() => dispatch(clearArrayAction())}>clearArray</button>
       </div>
 
-      {reduxStore.array.map((todo: ITodo) => {
-        return <div>{todo.title}</div>;
+      {reduxStore.array.map((todo, ind) => {
+        return <div key={ind}>{todo.title}</div>;
       })}
     </div>
   );

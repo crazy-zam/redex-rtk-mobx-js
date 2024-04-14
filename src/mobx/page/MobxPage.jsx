@@ -1,12 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import mobxStore from '../store/mobxStore';
 import styles from './mobxPage.module.css';
-interface ITodo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 const MobxPage = observer(() => {
   return (
@@ -23,8 +17,8 @@ const MobxPage = observer(() => {
         <button onClick={mobxStore.clearArray}>clearArray</button>
       </div>
 
-      {mobxStore.array.map((todo: ITodo) => {
-        return <div>{todo.title}</div>;
+      {mobxStore.array.map((todo, ind) => {
+        return <div key={ind}>{todo.title}</div>;
       })}
     </div>
   );
